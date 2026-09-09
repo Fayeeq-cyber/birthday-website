@@ -1,0 +1,620 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255, 120, 170, 0.08), transparent 30%),
+        radial-gradient(circle at 80% 80%, rgba(150, 100, 255, 0.08), transparent 30%),
+        #0f0f14;
+
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "♡  ✦  ♡  ✧  ♡  ✦  ♡";
+    position: fixed;
+    top: 8%;
+    left: 0;
+    width: 100%;
+    font-size: 20px;
+    letter-spacing: 35px;
+    opacity: 0.08;
+    pointer-events: none;
+    animation: floatBackground 8s ease-in-out infinite;
+}
+
+.container {
+    width: 100%;
+    max-width: 760px;
+    padding: 40px 25px;
+    margin: auto;
+}
+
+h1 {
+    font-size: 50px;
+    margin-bottom: 20px;
+    line-height: 1.15;
+}
+
+h2 {
+    line-height: 1.3;
+}
+
+p {
+    font-size: 20px;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+/* Buttons */
+
+button {
+    padding: 14px 30px;
+    border: none;
+    border-radius: 30px;
+
+    background: white;
+    color: #0f0f14;
+
+    font-size: 18px;
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+button:hover {
+    transform: scale(1.08);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15);
+}
+
+button:active {
+    transform: scale(0.96);
+}
+
+/* Message */
+
+#message {
+    display: none;
+    animation: fadeUp 0.8s ease forwards;
+}
+
+/* Memories */
+
+#memories {
+    display: none;
+    max-width: 700px;
+    margin: 0 auto;
+    animation: fadeUp 0.8s ease forwards;
+}
+
+.intro {
+    opacity: 0.8;
+}
+
+#clickHint {
+    transition: opacity 0.5s ease;
+}
+
+.timeline {
+    position: relative;
+    margin-top: 50px;
+    padding-left: 30px;
+    border-left: 2px solid rgba(255, 255, 255, 0.25);
+}
+
+.memory {
+    position: relative;
+    text-align: left;
+
+    margin-bottom: 45px;
+    padding: 25px;
+
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+
+    cursor: pointer;
+
+    opacity: 0;
+    transform: translateY(30px);
+
+    animation: appear 0.8s ease forwards;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.memory:hover {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.09);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+}
+
+.memory::before {
+    content: "";
+
+    position: absolute;
+
+    width: 14px;
+    height: 14px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    left: -38px;
+    top: 30px;
+
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+.memory .date {
+    font-size: 14px;
+    opacity: 0.6;
+    margin-bottom: 10px;
+}
+
+.memory h2 {
+    margin-bottom: 15px;
+}
+
+.memory p {
+    font-size: 17px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.memory:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.memory:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.memory:nth-child(3) {
+    animation-delay: 0.8s;
+}
+
+.memory:nth-child(4) {
+    animation-delay: 1.1s;
+}
+
+.memory:nth-child(5) {
+    animation-delay: 1.4s;
+}
+
+@keyframes appear {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Expandable memory */
+
+.extra {
+    max-height: 0;
+    overflow: hidden;
+
+    opacity: 0;
+
+    transition:
+        max-height 0.5s ease,
+        opacity 0.5s ease;
+}
+
+.memory.open .extra {
+    max-height: 200px;
+    opacity: 1;
+    margin-top: 15px;
+}
+
+.final-memory {
+    text-align: center;
+}
+
+/* Reveal button */
+
+.reveal-button {
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+/* Surprise */
+
+#surprise {
+    display: none;
+
+    margin-top: 40px;
+    padding: 40px 25px;
+
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+
+    animation: fadeUp 0.8s ease forwards;
+}
+
+#surprise h1 {
+    margin-bottom: 20px;
+}
+
+#surprise p {
+    line-height: 1.6;
+}
+
+/* Mini Game */
+
+#game {
+    display: none;
+    margin-top: 40px;
+
+    animation: fadeUp 0.8s ease forwards;
+}
+
+#game h1 {
+    margin-bottom: 15px;
+}
+
+#gameInfo {
+    font-size: 18px;
+    margin: 20px 0;
+}
+
+#gameArea {
+    position: relative;
+
+    width: 100%;
+    max-width: 650px;
+    height: 400px;
+
+    margin: 20px auto;
+
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+
+    background:
+        radial-gradient(circle at center, rgba(255, 255, 255, 0.05), transparent 60%);
+
+    overflow: hidden;
+}
+
+.heart {
+    position: absolute;
+
+    padding: 0;
+    border: none;
+
+    background: transparent;
+
+    font-size: 32px;
+    cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        filter 0.15s ease;
+}
+
+.heart:hover {
+    transform: scale(1.3);
+    filter: drop-shadow(0 0 8px rgba(255, 120, 170, 0.7));
+}
+
+#gameResult {
+    margin-top: 25px;
+}
+
+#gameResult h2 {
+    margin-bottom: 10px;
+}
+
+#gameResult p {
+    font-size: 18px;
+}
+
+/* Final Surprise */
+
+#finalSurprise {
+    display: none;
+
+    margin-top: 40px;
+
+    opacity: 0;
+    transform: translateY(40px) scale(0.96);
+}
+
+#finalSurprise.reveal {
+    animation: finalReveal 1.5s ease forwards;
+}
+
+#finalSurprise img {
+    display: block;
+
+    width: 100%;
+    max-width: 650px;
+    height: auto;
+
+    margin: 0 auto 35px;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 0 40px rgba(255, 255, 255, 0.15),
+        0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+#finalSurprise h2 {
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+#finalSurprise p {
+    max-width: 600px;
+
+    margin: 0 auto;
+
+    font-size: 18px;
+    line-height: 1.7;
+
+    opacity: 0.9;
+}
+
+@keyframes finalReveal {
+
+    0% {
+        opacity: 0;
+        transform: translateY(40px) scale(0.96);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translateY(-5px) scale(1.01);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* General animations */
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes floatBackground {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(15px);
+    }
+}
+
+/* ========================= */
+/* MOBILE */
+/* ========================= */
+
+@media (max-width: 600px) {
+
+    body {
+        align-items: flex-start;
+    }
+
+    .container {
+        width: 100%;
+        padding: 35px 16px;
+    }
+
+    h1 {
+        font-size: 34px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    p {
+        font-size: 17px;
+        line-height: 1.55;
+    }
+
+    button {
+        font-size: 16px;
+        padding: 13px 24px;
+    }
+
+    /* Timeline */
+
+    .timeline {
+        margin-top: 35px;
+        padding-left: 20px;
+    }
+
+    .memory {
+        padding: 20px;
+        margin-bottom: 30px;
+        border-radius: 16px;
+    }
+
+    .memory::before {
+        width: 11px;
+        height: 11px;
+
+        left: -27px;
+        top: 25px;
+    }
+
+    .memory h2 {
+        font-size: 20px;
+    }
+
+    .memory p {
+        font-size: 16px;
+    }
+
+    /* Surprise */
+
+    #surprise {
+        padding: 30px 18px;
+    }
+
+    /* Game */
+
+    #game {
+        margin-top: 25px;
+    }
+
+    #gameArea {
+        height: 330px;
+        border-radius: 16px;
+    }
+
+    .heart {
+        font-size: 28px;
+    }
+
+    #gameInfo {
+        font-size: 16px;
+    }
+
+    /* Final */
+
+    #finalSurprise {
+        margin-top: 30px;
+    }
+
+    #finalSurprise img {
+        border-radius: 16px;
+        margin-bottom: 25px;
+    }
+
+    #finalSurprise h2 {
+        font-size: 23px;
+    }
+
+    #finalSurprise p {
+        font-size: 16px;
+    }
+}
+
+/* Very small phones */
+
+@media (max-width: 380px) {
+
+    h1 {
+        font-size: 30px;
+    }
+
+    .container {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    #gameArea {
+        height: 300px;
+    }
+}
+/* ========================= */
+/* CINEMATIC OPENING */
+/* ========================= */
+
+#welcome {
+    animation: welcomeFade 1.4s ease forwards;
+}
+
+#welcome h1 {
+    animation: titleReveal 1.2s ease forwards;
+}
+
+#welcome p {
+    opacity: 0;
+    animation: subtitleReveal 1s ease 0.5s forwards;
+}
+
+#welcome button {
+    opacity: 0;
+    animation: buttonReveal 1s ease 1s forwards;
+}
+
+@keyframes welcomeFade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes titleReveal {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes subtitleReveal {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 0.8;
+        transform: translateY(0);
+    }
+}
+
+@keyframes buttonReveal {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
