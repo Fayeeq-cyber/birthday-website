@@ -618,8 +618,3 @@ button:active {
         transform: translateY(0);
     }
 }
-@media (max-width: 600px) {
-    body {
-        background: red !important;
-    }
-}
