@@ -238,8 +238,22 @@ button:active {
 /* Reveal button */
 
 .reveal-button {
-    margin-top: 10px;
-    margin-bottom: 40px;
+    display: inline-block;
+    background: linear-gradient(135deg, #ff4d8d, #ff7eb3);
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 30px;
+    padding: 14px 30px;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.reveal-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 77, 141, 0.3);
 }
 
 /* Surprise */
