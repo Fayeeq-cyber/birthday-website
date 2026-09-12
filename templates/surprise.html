@@ -12,6 +12,10 @@
 
 <body>
 
+    <audio id="birthdayMusic" loop>
+        <source src="{{ url_for('static', filename='birthday-music.mp3') }}" type="audio/mpeg">
+    </audio>
+
     <div class="container">
 
         <div id="surprise">
@@ -32,7 +36,49 @@
 
         </div>
 
+
+        <div id="game">
+
+            <h1>Catch the Hearts ❤️</h1>
+
+            <p>
+                Click 10 hearts before time runs out. 😈
+            </p>
+
+            <div id="gameInfo">
+                Hearts: <span id="score">0</span>/10
+                &nbsp; | &nbsp;
+                Time: <span id="timer">20</span>s
+            </div>
+
+            <div id="gameArea"></div>
+
+            <div id="gameResult"></div>
+
+
+            <div id="finalSurprise">
+
+                <img src="{{ url_for('static', filename='final.png') }}" alt="Our story">
+
+                <h2>And... that's my little surprise for you. ♡</h2>
+
+                <p>
+                    Happy Birthday, Trishuu. ❤️
+                    <br><br>
+                    I know I've made mistakes, and I know I broke your trust.
+                    I'm not going to pretend that a few words can fix that.
+                    I want to earn it back through my actions, little by little.
+                    <br><br>
+                    Thank you for giving us another chance babyyy😭.
+                    Here's to making better memories together. :)
+                </p>
+
+            </div>
+
+        </div>
+
     </div>
+
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 
