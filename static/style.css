@@ -259,7 +259,7 @@ button:active {
 /* Surprise */
 
 #surprise {
-    display: none;
+    display: block;
 
     margin-top: 40px;
     padding: 40px 25px;
