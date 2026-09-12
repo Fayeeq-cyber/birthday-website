@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>For Trisha ♡</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=3">
+</head>
+
+<body>
+    <audio id="birthdayMusic" loop>
+    <source src="{{ url_for('static', filename='birthday-music.mp3') }}" type="audio/mpeg">
+</audio>
+
+    <div class="container">
+
+        <div id="welcome">
+
+            <h1> Hey Trishaaa😛😛</h1>
+
+            <p>Ready for this?😈</p>
+
+            <button onclick="showMessage()">Enter ♡</button>
+
+        </div>
+
+
+        <div id="message">
+
+            <h1>Happpyy Birthdayyyy, Trishh! 🥳🎉</h1>
+
+            <p>
+                Sooo... you clicked the button 😭
+            </p>
+
+            <p>
+                I made this little thing because you deserve
+                something more than just a "happy birthday" text.🥀🥀
+            </p>
+
+            <p>
+                And yeh, I actually spent time making this 🙏😭.
+                Please appreciate my suffering 💀
+            </p>
+
+            <button onclick="showMemories()">
+                alright, continue 👀
+            </button>
+
+        </div>
+
+
+        <div id="memories">
+
+            <h1>Our Story 💌</h1>
+
+            <p class="intro">
+    We didn't exactly know where this was going...
+    but somehow, here we are. 😭
+    <br>
+    <small id="clickHint">Click the memories to read more!😼</small>
+</p>
+
+
+            <div class="timeline">
+
+
+                <div class="memory" onclick="toggleMemory(this)">
+
+                    <div class="date">
+                        November 2025
+                    </div>
+
+                    <h2>💬 Where it all started</h2>
+
+                    <p>
+                        Somewhere in November, we started talking.
+                        I didn't know it at the time, but apparently
+                        someone was already starting to catch feelings 👀
+                    </p>
+
+                    <div class="extra">
+                        <p>
+                            And somehow those random conversations
+                            turned into something way more important. :)
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="memory" onclick="toggleMemory(this)">
+
+                    <div class="date">
+                        16 January 2026
+                    </div>
+
+                    <h2>❤️ The plot twist</h2>
+
+                    <p>
+                        Turns out, you fell for me first.
+                        I only found that out later through your friend 😭
+                    </p>
+
+                    <p>
+                        But by then, I already knew I wanted you too muhehehehehehe😈
+                    
+                    </p>
+
+                    <div class="extra">
+                        <p>
+                            So yeah... apparently you were lowkey ahead of me
+                            the whole time. 😭
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="memory" onclick="toggleMemory(this)">
+
+                    <div class="date">
+                        June / July 2026
+                    </div>
+
+                    <h2>🥀 A chapter we didn't expect</h2>
+
+                    <p>
+                        Things got complicated, and for a while,
+                        our story took a different turn.
+                    </p>
+
+                    <div class="extra">
+                        <p>
+                            Not every chapter goes exactly how you expect.
+                            But this wasn't the end of our story.(my gandmasti was over loaded😭🥀)
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="memory" onclick="toggleMemory(this)">
+
+                    <div class="date">
+                        5 September 2026
+                    </div>
+
+                    <h2>♡ We found our way back</h2>
+
+                    <p>
+                        After everything, we somehow found our way
+                        back to each other.
+                    </p>
+
+                    <p>
+                        And honestly... I'm glad we did. :)
+                    </p>
+
+                    <div class="extra">
+                        <p>
+                            Somehow, after all that, we're here again.
+                            And that's pretty damn special. ♡
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="memory final-memory" onclick="toggleMemory(this)">
+
+                    <h2>✨ And now...</h2>
+
+                    <p>
+                        We're here again.
+                    </p>
+
+                    <p>
+                        Still talking. Still annoying each other.
+                        Still making memories.
+                    </p>
+
+                    <p>
+                        And this time, I'm not done writing our story yet. ♡
+                    </p>
+
+                    <div class="extra">
+                        <p>
+                            This is only one little page of everything
+                            that's happened. There's still a lot more
+                            to come.😈
+                        </p>
+                    </div>
+
+                </div>
+
+<button class="reveal-button" onclick="showSurprise()">
+    Okay... there's one more thing 
+</button>
+
+</div>
+
+
+            <div id="surprise">
+
+    <h1>Wait... 👀</h1>
+
+    <p>
+        You really thought that was the end?
+    </p>
+
+    <p>
+        Nahhh. I put a little more effort into this.😼😼
+    </p>
+
+    <button onclick="startGame()">
+        Play a little game 🎮
+    </button>
+
+</div>
+
+
+<div id="game">
+
+    <h1>Catch the Hearts ❤️</h1>
+
+    <p>
+        Click 10 hearts before time runs out. 😈
+    </p>
+
+    <div id="gameInfo">
+        Hearts: <span id="score">0</span>/10
+        &nbsp; | &nbsp;
+        Time: <span id="timer">20</span>s
+    </div>
+
+    <div id="gameArea"></div>
+
+    <div id="gameResult"></div>
+
+<div id="finalSurprise">
+
+    <img src="{{ url_for('static', filename='final.png') }}" alt="Our story">
+
+    <h2>And... that's my little surprise for you. ♡</h2>
+
+    <p>
+        Happy Birthday, Trishuu. ❤️
+        <br><br>
+        I know I've made mistakes, and I know I broke your trust.
+        I'm not going to pretend that a few words can fix that.
+        I want to earn it back through my actions, little by little.
+        <br><br>
+        Thank you for giving us another chance babyyy😭.
+        Here's to making better memories together. :)
+    </p>
+
+</div>
+
+</div>
+
+        </div>
+
+    </div>
+
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
